@@ -4540,7 +4540,11 @@ const processInput = (move) => {
   if (newPosition > 99) {
     newPosition = newPosition % 100;
   } else if (newPosition < 0) {
-    newPosition = 100 - Math.abs(newPosition % 100);
+    if (Math.abs(newPosition % 100) === 0) {
+      newPosition = 0;
+    } else {
+      newPosition = 100 - Math.abs(newPosition % 100);
+    }
   }
 
   console.log(`The dial is rotated ${move} to point at ${newPosition}`);
